@@ -21,3 +21,4 @@ RUN yes | pecl install xdebug \
     && echo "xdebug.profiler_enable_trigger=on" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 RUN echo "disable_functions = mail" >> /usr/local/etc/php/php.ini
+RUN echo "date.timezone = america/new_york" >> /usr/local/etc/php/php.ini
