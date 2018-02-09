@@ -12,6 +12,7 @@ services:
 ###########################
     nginx:
         image: nginx:latest
+        container_name: nginx
         ports:
             - 8080:80
         volumes:
@@ -24,6 +25,7 @@ services:
 ###########################
     php:
         build: ./docker/php/
+        container_name: php
         expose:
             - 9000
         volumes:
@@ -34,6 +36,7 @@ services:
 ###########################
     mysql:
         image: mysql:latest
+        container_name: mysql
         #expose:
         #    - 3306
         ports:
