@@ -25,19 +25,26 @@ While this project is intended for Drupal, it can also be used for WordPress, Jo
 1. Once the images are built navigate to the website folder
    * cd /www/sites/awesomesite_ext
 1. Run dstart. Three containers should start: php, nginx, mysql.
-   * You can then verify they are running by executing *docker ps -a*
+   * You can then verify they are running by executing *docker ps*
+1. View the website at http://localhost:8080
 
 #### In order to run drush, composer, and git commands you need to connect to the php container.
 1. Navigate to the website folder
    * cd /www/sites/awesomesite_ext
 1. Connect to the php container
-   * Type dssh and hit return
+   * Type dssh and hit return *Note: The php container must be running in order for you to connect to it.*
    
 You will then see a prompt that resembles **root@96a208926e83:/var/www/html#** and be able to run drush commands.
+
+### Notes
+* You can only run the containers for one site at a time.
+* You will need to clone this repository into each website folder.
+* In order to switch from one site to another, stop the currently running containers, switch to the other folder, start those containers.
 
 ### Commands
 * **dstart** Starts the containers
 * **dstop** Stops the containers
+* **dssh** Connects to the running php container
 * **exit** (From within a container) Exits the container
 * **docker-compose build** Builds the container images
 * **docker ps -a** Shows all docker containers (remove the -a to only show running containers)
