@@ -32,7 +32,7 @@ RUN echo "date.timezone = america/new_york" >> /usr/local/etc/php/php.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN composer global require drush/drush:dev-master
+RUN composer global require drush/drush:7.*
 
 RUN composer global update
 
