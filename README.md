@@ -24,10 +24,7 @@ While this project is intended for Drupal, it can also be used for WordPress, Jo
    * docker-compose build
 1. Put your website files in /www/sites/awesomesite_ext/html
 1. Update the settings.php file with the mysql hostname created in the earlier step.
-1. Add three aliases to ~/.bashrc OR ~/.bash_profile
-   * alias dstart='docker-compose up -d'
-   * alias dstop='docker stop $(docker ps -aq)'
-   * alias dssh='docker exec -it php bash'
+1. Copy the contents of .bash_profile into ~/.bashrc OR ~/.bash_profile
 1. Source the file above
    * source ~/.bashrc OR source ~/.bash_profile
 1. Once the images are built navigate to the website folder
@@ -40,7 +37,7 @@ While this project is intended for Drupal, it can also be used for WordPress, Jo
 1. Navigate to the website folder
    * cd /www/sites/awesomesite_ext
 1. Connect to the php container
-   * Type dssh and hit return *Note: The php container must be running in order for you to connect to it.*
+   * Type ds \<acronym\> and hit return *Note: The php container must be running in order for you to connect to it.*
    
 You will then see a prompt that resembles **root@96a208926e83:/var/www/html#** and be able to run drush commands.
 
@@ -52,7 +49,7 @@ You will then see a prompt that resembles **root@96a208926e83:/var/www/html#** a
 ### Commands
 * **dstart** Starts the containers
 * **dstop** Stops the containers
-* **dssh** Connects to the running php container
+* **ds \<acronym\>** Connects to the running php container
 * **exit** (From within a container) Exits the container
 * **docker-compose build** Builds the container images
 * **docker ps -a** Shows all docker containers (remove the -a to only show running containers)
