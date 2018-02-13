@@ -11,11 +11,19 @@ While this project is intended for Drupal, it can also be used for WordPress, Jo
    * mkdir /www/sites/awesomesite_ext
 1. Clone the repository into that website folder.
    * git clone git@github.com:DesignGoggles/drupal-docker.git /www/sites/awesomesite_ext
+1. Rename the three container_name values in docker-compose.yml
+   * e.g. container_name: nginx_acronym
+     * Nginx Container.
+   * e.g. container_name: acronym
+     * PHP Container. This should be short as you will use it to connect to the container.
+   * e.g. container_name: mysql_acronym
+     * MySQL Container. You will use this name as the 'hostname' for mysql connections.
 1. Make an 'html' folder to hold the website files
    * mkdir /www/sites/awesomesite_ext/html
 1. Build the docker images (This can take a long time, so do other steps in the meantime)
    * docker-compose build
 1. Put your website files in /www/sites/awesomesite_ext/html
+1. Update the settings.php file with the mysql hostname created in the earlier step.
 1. Add three aliases to ~/.bashrc OR ~/.bash_profile
    * alias dstart='docker-compose up -d'
    * alias dstop='docker stop $(docker ps -aq)'
