@@ -12,7 +12,7 @@ services:
 ###########################
     nginx:
         image: nginx:latest
-        container_name: nginx
+        container_name: nginx_${HOSTNAME}
         ports:
             - 8080:80
         volumes:
@@ -25,7 +25,7 @@ services:
 ###########################
     php:
         build: ./docker/php/
-        container_name: php
+        container_name: ${HOSTNAME}
         expose:
             - 9000
         volumes:
@@ -36,7 +36,7 @@ services:
 ###########################
     mysql:
         image: mysql:latest
-        container_name: mysql
+        container_name: mysql_${HOSTNAME}
         #expose:
         #    - 3306
         ports:
@@ -45,7 +45,7 @@ services:
         volumes:
             - database_data:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: project
-            MYSQL_USER: project
-            MYSQL_PASSWORD: project
+            MYSQL_ROOT_PASSWORD: ${DBROOTPASSWORD}
+            MYSQL_DATABASE: ${DB}
+            MYSQL_USER: ${DBUSER}
+            MYSQL_PASSWORD: ${DBPASSWORD}
