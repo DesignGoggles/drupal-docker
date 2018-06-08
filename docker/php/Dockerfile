@@ -36,7 +36,8 @@ RUN echo "zend_extension=opcache.so" >> /usr/local/etc/php/php.ini
 RUN echo "opcache.enable=1" >> /usr/local/etc/php/php.ini
 RUN echo "opcache.memory_consumption=128" >> /usr/local/etc/php/php.ini
 RUN echo "opcache.max_accelerated_files=4000" >> /usr/local/etc/php/php.ini
-RUN echo "opcache.revalidate_freq=60" >> /usr/local/etc/php/php.ini
+RUN echo "opcache.revalidate_freq=0" >> /usr/local/etc/php/php.ini
+RUN echo "opcache.fast_shutdown=1" >> /usr/local/etc/php/php.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
