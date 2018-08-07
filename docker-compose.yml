@@ -31,6 +31,7 @@ services:
         volumes:
             - ./html:/var/www/html
             - ~/.ssh:/root/.ssh
+            - ~/.gitconfig:/root/.gitconfig
 
 ###########################
 # Setup the Database (MySQL) container

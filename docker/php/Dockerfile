@@ -47,6 +47,3 @@ RUN composer global require drush/drush:dev-master
 RUN composer global update
 
 RUN echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> ~/.bashrc
-
-RUN git config --global user.email "you@example.com"
-RUN git config --global user.name "Your Name"
