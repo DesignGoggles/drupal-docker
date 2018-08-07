@@ -15,7 +15,7 @@ While this project is intended for Drupal, it can also be used for WordPress, Jo
 1. Go into the newly created website folder
    * `cd /www/sites/awesomesite_exit`
 1. Clone this git repository into that website folder.
-   * `git clone git@github.com:DesignGoggles/drupal-docker.git`
+   * `git clone https://github.com/DesignGoggles/drupal-docker.git`
 1. Make an 'html' folder to hold the website files
    * `mkdir html`
 1. Configure website variables
