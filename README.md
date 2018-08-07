@@ -50,6 +50,16 @@ While this project is intended for Drupal, it can also be used for WordPress, Jo
   1. Switch to the folder containing the other website cd /www/sites/awesomesite2_ext
   1. Run `dstart`
 
+### Rebuilding/Updating images
+* If you want to make a modification to the nginx, php, or mysql (i.e. change the PHP version, the timezone, add php extensions, update packages)  you will need to rebuild the images.
+1. Run `dstop` to stop all running containers
+1. Make changes to the Docker configuration (You likely will only ever need to modify `/www/sites/awesomesite_extdocker/php/Dockerfile`)
+1. Navigate to `/www/sites/awesomesite_ext`, run `dbuild` to rebuild the images, run `dstart` to start the containers.
+
+### D8 Notes
+Open `docker/nginx/default.conf` and change `root /var/www/html;` to `root /var/www/html/web`;
+* You will then need to rebuild the images using the instructions above.
+
 ### Command Summary
 * `dstart` Starts the containers
 * `dstop` Stops the containers
