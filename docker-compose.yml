@@ -30,6 +30,7 @@ services:
             - 9000
         volumes:
             - ./html:/var/www/html
+            - ~/.ssh:/root/.ssh
 
 ###########################
 # Setup the Database (MySQL) container
