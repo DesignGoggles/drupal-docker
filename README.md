@@ -51,7 +51,7 @@ While this project is intended for Drupal, it can also be used for WordPress, Jo
 * `dstart` Starts the containers
 * `dstop` Stops the containers
 * `dbuild` Builds the container images
-* `ds \<acronym\>` Connects to the running php container
+* `ds website_acronym_here` Connects to the running php container
 * `exit` (From within a container) Exits the container
 * `docker ps -a` Shows all docker containers (remove the -a to only show running containers)
 
