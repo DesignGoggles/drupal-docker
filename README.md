@@ -4,7 +4,7 @@ This project contains three docker containers (nginx, php, mysql) that can be us
 While this project is intended for Drupal, it can also be used for WordPress, Joomla!, or any other php-based website.
 
 ## Installation instructions
-1. Install [Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+1. Download and Install [Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
 1. Copy the contents of `.bash_profile` into `~/.bashrc` OR `~/.bash_profile`
 1. Source the file above
    * `source ~/.bashrc` OR `source ~/.bash_profile`
@@ -21,6 +21,11 @@ While this project is intended for Drupal, it can also be used for WordPress, Jo
 1. Configure website variables
    * Open .env and change `HOSTNAME=hostname` to `HOSTNAME=website_acronym_here`
    * Keep the website_acronym_here short and memorable as you may be typing it frequently.
+1. Open Docker for Mac
+   * In the mac menu bar wait for the container dots to finish their dance
+   * Select Preferences
+   * Select File Sharing
+   * Enter the path of the folder containing your websites (i.e. /www/sites)
 1. Build the docker images and start the containers
    * Open terminal
    * `cd /www/sites/awesomesite_ext`
@@ -42,24 +47,6 @@ While this project is intended for Drupal, it can also be used for WordPress, Jo
    * Run `ds website_acronym_here` *The php container must be running in order for you to connect to it.*
    * You will then see a prompt that resembles **root@96a208926e83:/var/www/html#** and be able to run drush commands.
 
-### Notes
-* You can only run the containers for one website at a time because they all share the same url http://localhost:8080
-* You will need to follow this process for every website folder.
-* In order to switch from one site to another:
-  1. Run `dstop` to stop the currently running containers
-  1. Switch to the folder containing the other website cd /www/sites/awesomesite2_ext
-  1. Run `dstart`
-
-### Rebuilding/Updating images
-* If you want to make a modification to the nginx, php, or mysql (i.e. change the PHP version, the timezone, add php extensions, update packages)  you will need to rebuild the images.
-1. Run `dstop` to stop all running containers
-1. Make changes to the Docker configuration (You likely will only ever need to modify `/www/sites/awesomesite_extdocker/php/Dockerfile`)
-1. Navigate to `/www/sites/awesomesite_ext`, run `dbuild` to rebuild the images, run `dstart` to start the containers.
-
-### D8 Notes
-Open `docker/nginx/default.conf` and change `root /var/www/html;` to `root /var/www/html/web`;
-* You will then need to rebuild the images using the instructions above.
-
 ### Command Summary
 * `dstart` Starts the containers
 * `dstop` Stops the containers
@@ -68,7 +55,23 @@ Open `docker/nginx/default.conf` and change `root /var/www/html;` to `root /var/
 * `exit` (From within a container) Exits the container
 * `docker ps -a` Shows all docker containers (remove the -a to only show running containers)
 
+### General Notes
+* You can only run the containers for one website at a time because they all share the same url http://localhost:8080
+* You will need to follow this process for every website folder.
+* In order to switch from one site to another:
+  1. Run `dstop` to stop the currently running containers
+  1. Switch to the folder containing the other website cd /www/sites/awesomesite2_ext
+  1. Run `dstart`
 
-#### TODO:
-+ Create a Drupal 8 universal settings.php
-+ Add documentation for how to update drush for D8 websites
+### D8 Notes
+Open `docker/nginx/default.conf` and change `root /var/www/html;` to `root /var/www/html/web`;
+* You will then need to rebuild the images using the instructions below.
+
+### Rebuilding/Updating images
+* If you want to make a modification to the nginx, php, or mysql (i.e. change the PHP version, the timezone, add php extensions, update packages)  you will need to rebuild the images.
+1. Run `dstop` to stop all running containers
+1. Make changes to the Docker configuration (You likely will only ever need to modify `/www/sites/awesomesite_extdocker/php/Dockerfile`)
+1. Navigate to `/www/sites/awesomesite_ext`, run `dbuild` to rebuild the images, run `dstart` to start the containers.
+
+### Troubleshooting
+* If you see the error `port is already allocated`, which is likely to be the MySQL port 3306, make sure you have no other local website hosting software running (MAMP, Acquia Dev Desktop, AMPPS, etc).
