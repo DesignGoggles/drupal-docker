@@ -4,8 +4,8 @@ This project contains three docker containers (nginx, php, mysql) that can be us
 While this project is intended for Drupal, it can also be used for WordPress, Joomla!, or any other php-based website.
 
 ## Installation instructions
-1. Download and Install [Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
-1. Copy the contents of `.bash_profile` into `~/.bashrc` OR `~/.bash_profile`
+1. Download and Install [Docker for Mac Community Edition](https://docs.docker.com/docker-for-mac/install/)
+1. Copy the contents of [.bash_profile](https://github.com/DesignGoggles/drupal-docker/blob/master/.bash_profile) into `~/.bashrc` OR `~/.bash_profile`
 1. Source the file above
    * `source ~/.bashrc` OR `source ~/.bash_profile`
 1. Navigate to where to want to put your websites
@@ -60,7 +60,7 @@ While this project is intended for Drupal, it can also be used for WordPress, Jo
 * You will need to follow this process for every website folder.
 * In order to switch from one site to another:
   1. Run `dstop` to stop the currently running containers
-  1. Switch to the folder containing the other website cd /www/sites/awesomesite2_ext
+  1. Switch to the folder containing the other website `cd /www/sites/awesomesite2_ext`
   1. Run `dstart`
 
 ### D8 Notes
@@ -70,7 +70,7 @@ Open `docker/nginx/default.conf` and change `root /var/www/html;` to `root /var/
 ### Rebuilding/Updating images
 * If you want to make a modification to the nginx, php, or mysql (i.e. change the PHP version, the timezone, add php extensions, update packages)  you will need to rebuild the images.
 1. Run `dstop` to stop all running containers
-1. Make changes to the Docker configuration (You likely will only ever need to modify `/www/sites/awesomesite_extdocker/php/Dockerfile`)
+1. Make changes to the Docker configuration (You likely will only ever need to modify `/www/sites/awesomesite_extdocker/Docker/php/Dockerfile`)
 1. Navigate to `/www/sites/awesomesite_ext`, run `dbuild` to rebuild the images, run `dstart` to start the containers.
 
 ### Troubleshooting
