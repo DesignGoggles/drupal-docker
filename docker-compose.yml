@@ -46,6 +46,7 @@ services:
         - 3306:3306
         volumes:
             - database_data:/var/lib/mysql
+            - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
         environment:
             MYSQL_ROOT_PASSWORD: ${DBROOTPASSWORD}
             MYSQL_DATABASE: ${DB}
