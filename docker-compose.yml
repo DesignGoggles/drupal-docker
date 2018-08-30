@@ -37,7 +37,8 @@ services:
 # Setup the Database (MySQL) container
 ###########################
     mysql:
-        image: mysql:latest
+        image: mysql:5.7
+        command: --default-authentication-plugin=mysql_native_password
         container_name: mysql_${HOSTNAME}
         #expose:
         #    - 3306
