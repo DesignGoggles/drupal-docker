@@ -31,6 +31,8 @@ RUN yes | pecl install xdebug \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.profiler_enable_trigger=on" >> /usr/local/etc/php/conf.d/xdebug.ini
 
+RUN echo "memory_limit = 1G" >> /usr/local/etc/php/php.ini
+RUN echo "max_execution_time = 300" >> /usr/local/etc/php/php.ini
 RUN echo "disable_functions = mail" >> /usr/local/etc/php/php.ini
 RUN echo "date.timezone = america/new_york" >> /usr/local/etc/php/php.ini
 RUN echo "zend_extension=opcache.so" >> /usr/local/etc/php/php.ini
