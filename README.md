@@ -75,3 +75,4 @@ Open `docker/nginx/default.conf` and change `root /var/www/html;` to `root /var/
 
 ### Troubleshooting
 * If you see the error `port is already allocated`, which is likely to be the MySQL port 3306, make sure you have no other local website hosting software running (MAMP, Acquia Dev Desktop, AMPPS, etc).
+* If you get the error "ERROR: could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network" run `docker network prune`
