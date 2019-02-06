@@ -20,7 +20,7 @@ services:
             - 8080:80
             - 8081:81
         volumes:
-            - ./docker/nginx/:/etc/nginx/conf.d/
+            - ./docker/nginx/:/etc/nginx/conf.d/:cached
         volumes_from:
             - php5
             - php7
@@ -34,9 +34,9 @@ services:
         expose:
             - 9000
         volumes:
-            - /www/sites:/var/www/html
-            - ~/.ssh:/root/.ssh
-            - ~/.gitconfig:/root/.gitconfig
+            - /www/sites:/var/www/html:cached
+            - ~/.ssh:/root/.ssh:cached
+            - ~/.gitconfig:/root/.gitconfig:cached
 
 ###########################
 # Setup the PHP 7x container
@@ -47,9 +47,9 @@ services:
         expose:
             - 9000
         volumes:
-            - /www/sites:/var/www/html
-            - ~/.ssh:/root/.ssh
-            - ~/.gitconfig:/root/.gitconfig
+            - /www/sites:/var/www/html:cached
+            - ~/.ssh:/root/.ssh:cached
+            - ~/.gitconfig:/root/.gitconfig:cached
 
 ###########################
 # Setup the Database (MySQL) container
