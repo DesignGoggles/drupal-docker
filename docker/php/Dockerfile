@@ -25,8 +25,6 @@ RUN docker-php-ext-install gd
 
 RUN docker-php-ext-install json
 
-RUN gem install --no-rdoc --no-ri compass
-
 RUN echo "memory_limit = 1G" >> /usr/local/etc/php/php.ini
 RUN echo "max_execution_time = 300" >> /usr/local/etc/php/php.ini
 RUN echo "disable_functions = mail" >> /usr/local/etc/php/php.ini
