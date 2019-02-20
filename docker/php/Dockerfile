@@ -1,5 +1,3 @@
-# FROM php:5.6-fpm
-# FROM php:7.0-fpm
 FROM php:7.2-fpm
 
 RUN apt-get update && \
@@ -48,7 +46,6 @@ RUN echo "opcache.fast_shutdown=1" >> /usr/local/etc/php/php.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# RUN composer global require drush/drush:7.*
 RUN composer global require drush/drush:dev-master
 
 RUN composer global update
