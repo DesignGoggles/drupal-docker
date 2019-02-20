@@ -29,7 +29,6 @@ RUN echo "memory_limit = 1G" >> /usr/local/etc/php/php.ini
 RUN echo "max_execution_time = 300" >> /usr/local/etc/php/php.ini
 RUN echo "disable_functions = mail" >> /usr/local/etc/php/php.ini
 RUN echo "date.timezone = america/new_york" >> /usr/local/etc/php/php.ini
-RUN echo "zend_extension=opcache.so" >> /usr/local/etc/php/php.ini
 RUN echo "opcache.enable=1" >> /usr/local/etc/php/php.ini
 RUN echo "opcache.memory_consumption=128" >> /usr/local/etc/php/php.ini
 RUN echo "opcache.max_accelerated_files=4000" >> /usr/local/etc/php/php.ini
