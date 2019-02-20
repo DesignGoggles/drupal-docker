@@ -1,6 +1,4 @@
-# FROM php:5.6-fpm
-# FROM php:7.0-fpm
-FROM php:7.2-fpm
+FROM php:5.6-fpm
 
 RUN apt-get update && \
     apt-get install -y \
@@ -29,11 +27,13 @@ RUN docker-php-ext-install json
 
 RUN gem install --no-rdoc --no-ri compass
 
-RUN yes | pecl install xdebug \
-    && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.profiler_enable_trigger=on" >> /usr/local/etc/php/conf.d/xdebug.ini
+RUN pecl install xdebug-2.5.3
+RUN docker-php-ext-enable xdebug
+RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_log=/tmp/xdebug.log" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_host=192.168.1.43" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 RUN echo "memory_limit = 1G" >> /usr/local/etc/php/php.ini
 RUN echo "max_execution_time = 300" >> /usr/local/etc/php/php.ini
@@ -48,8 +48,7 @@ RUN echo "opcache.fast_shutdown=1" >> /usr/local/etc/php/php.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# RUN composer global require drush/drush:7.*
-RUN composer global require drush/drush:dev-master
+RUN composer global require drush/drush:7.*
 
 RUN composer global update
 
