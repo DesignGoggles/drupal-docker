@@ -46,7 +46,7 @@ RUN echo "opcache.fast_shutdown=1" >> /usr/local/etc/php/php.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN composer global require drush/drush:dev-master
+RUN composer global require drush/drush
 
 RUN composer global update
 
