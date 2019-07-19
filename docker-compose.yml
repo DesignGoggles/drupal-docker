@@ -53,3 +53,13 @@ services:
             MYSQL_DATABASE: ${DB}
             MYSQL_USER: ${DBUSER}
             MYSQL_PASSWORD: ${DBPASSWORD}
+###########################
+# Setup the Solr container
+###########################
+    solr:
+        build:
+            context: .
+            dockerfile: docker/solr/Dockerfile
+        container_name: solr_${HOSTNAME}
+        ports:
+        - "8983:8983"
