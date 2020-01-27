@@ -2,10 +2,6 @@
 #   https://docs.docker.com/compose/compose-file/#/versioning
 version: '2'
 
-volumes:
-    database_data:
-        driver: local
-
 services:
 ###########################
 # Setup the Nginx container
@@ -29,7 +25,7 @@ services:
         expose:
             - 9000
         volumes:
-            - ./html:/var/www/html:cached
+            - ./html:/var/www/html:delegated
             - ~/.ssh:/root/.ssh:cached
             - ~/.gitconfig:/root/.gitconfig:cached
 
@@ -40,14 +36,10 @@ services:
         image: mysql:5.7
         command: --default-authentication-plugin=mysql_native_password
         container_name: mysql_${HOSTNAME}
-        #expose:
-        #    - 3306
         ports:
-        #     - 3307:3306
-        - 3306:3306
+            - 3307:3306
         volumes:
-            - database_data:/var/lib/mysql
-            - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+            - ./docker/mysql/my.cnf:/etc/mysql/my.cnf:cached
         environment:
             MYSQL_ROOT_PASSWORD: ${DBROOTPASSWORD}
             MYSQL_DATABASE: ${DB}
