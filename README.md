@@ -63,6 +63,10 @@ While this project is intended for Drupal, it can also be used for WordPress, Jo
   1. Switch to the folder containing the other website `cd /www/sites/awesomesite2_ext`
   1. Run `dstart`
 
+### WINDOWS
+* If you are using git bash, change the ds() function to winpty docker exec -it $1 bash;
+* Variables ${VAR} inside the docker-compose.yml will not work and you will need to manually change them.
+
 ### D8 Notes
 Open `docker/nginx/default.conf` and change `root /var/www/html;` to `root /var/www/html/web`;
 * You will then need to rebuild the images using the instructions below.
