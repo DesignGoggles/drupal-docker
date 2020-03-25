@@ -1,5 +1,11 @@
 <?php
 
+// DO NOT CHANGE THIS FILE! CHANGE SETTINGS.LOCAL.PHP!
+// DO NOT CHANGE THIS FILE! CHANGE SETTINGS.LOCAL.PHP!
+// DO NOT CHANGE THIS FILE! CHANGE SETTINGS.LOCAL.PHP!
+// DO NOT CHANGE THIS FILE! CHANGE SETTINGS.LOCAL.PHP!
+// DO NOT CHANGE THIS FILE! CHANGE SETTINGS.LOCAL.PHP!
+
 // @codingStandardsIgnoreFile
 
 /**
@@ -781,20 +787,19 @@ $settings['entity_update_batch_size'] = 50;
  * Keep this code block at the end of this file to take full effect.
  */
 #
-# if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-#   include $app_root . '/' . $site_path . '/settings.local.php';
-# }
+
 $config_directories['sync'] = '../config/sync';
 
-$settings['hash_salt'] = '676b67d780d83cf9cbe6eab3ce76c80f6460368b';
+/**
+ * If there is a local settings file, then include it
+ */
+$local_settings = __DIR__ . "/settings.local.php";
+if (file_exists($local_settings)) {
+  include $local_settings;
+}
 
-$databases['default']['default'] = array (
-  'database' => 'project',
-  'username' => 'project',
-  'password' => 'project',
-  'host' => 'mysql_container',
-  'port' => '3306',
-  'driver' => 'mysql',
-  'prefix' => '',
-  'collation' => 'utf8mb4_general_ci',
-);
+// DO NOT CHANGE THIS FILE! CHANGE SETTINGS.LOCAL.PHP!
+// DO NOT CHANGE THIS FILE! CHANGE SETTINGS.LOCAL.PHP!
+// DO NOT CHANGE THIS FILE! CHANGE SETTINGS.LOCAL.PHP!
+// DO NOT CHANGE THIS FILE! CHANGE SETTINGS.LOCAL.PHP!
+// DO NOT CHANGE THIS FILE! CHANGE SETTINGS.LOCAL.PHP!
