@@ -9,7 +9,7 @@ RUN apt-get update && \
         vim \
         git \
         unzip \
-        mysql-client \
+        default-mysql-client \
         ruby-dev \
         rubygems
 
