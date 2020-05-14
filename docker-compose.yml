@@ -45,3 +45,38 @@ services:
             MYSQL_DATABASE: ${DB}
             MYSQL_USER: ${DBUSER}
             MYSQL_PASSWORD: ${DBPASSWORD}
+
+###########################
+# ELASTIC
+###########################
+    elasticsearch0:
+        image: docker.elastic.co/elasticsearch/elasticsearch:6.0.0
+        container_name: elastic_${HOSTNAME}
+        expose:
+            - 9200
+        environment:
+            - cluster.name=docker-cluster
+            - bootstrap.memory_lock=true
+            - http.cors.enabled=true
+            - http.cors.allow-origin=*
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+    elasticsearch1:
+        image: docker.elastic.co/elasticsearch/elasticsearch:6.0.0
+        container_name: elastic_${HOSTNAME}_1
+        expose:
+            - 9200
+        environment:
+            - cluster.name=docker-cluster
+            - bootstrap.memory_lock=true
+            - http.cors.enabled=true
+            - http.cors.allow-origin=*
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+            - "discovery.zen.ping.unicast.hosts=elasticsearch0"
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
