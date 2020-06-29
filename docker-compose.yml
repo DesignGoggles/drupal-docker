@@ -28,6 +28,15 @@ services:
             - ./html:/var/www/html:delegated
             - ~/.ssh:/root/.ssh:cached
             - ~/.gitconfig:/root/.gitconfig:cached
+    php_xdebug:
+        build: ./docker/xdebug/
+        container_name: xdebug_${HOSTNAME}
+        expose:
+            - 9000
+        volumes:
+            - ./html:/var/www/html:delegated
+            - ~/.ssh:/root/.ssh:cached
+            - ~/.gitconfig:/root/.gitconfig:cached
 
 ###########################
 # Setup the Database (MySQL) container
