@@ -1,0 +1,18 @@
+{
+  "config": {
+    "scss": "/path/to/scss/directory/",
+    "css": "/path/to/css/directory/",
+    "style": "compressed"
+  },
+  "scripts": {
+    "init": "echo 'loglevel=silent' > ./.npmrc",
+    "compile": "echo 'Compiling SASS into CSS'; sass --style=$npm_package_config_style $npm_package_config_scss:$npm_package_config_css; echo 'Done!'",
+    "watch": "echo 'Preparing to watch SASS'; sass --watch  --style=$npm_package_config_style $npm_package_config_scss:$npm_package_config_css",
+    "clean": "echo 'Cleaning CSS Directory'; rm -r $npm_package_config_css/*; echo 'Done!'",
+    "compile:force": "npm run clean; npm run compile",
+    "ci": ""
+  },
+  "dependencies": {
+    "dart-sass": "^1.25.0"
+  }
+}
