@@ -38,3 +38,10 @@ RUN composer global require drush/drush
 RUN composer global update
 
 RUN echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> ~/.bashrc
+
+
+
+# Image Magick
+RUN apt-get update && apt-get install -y imagemagick libmagickwand-dev
+RUN pecl install imagick && docker-php-ext-enable imagick
+RUN apt-get install imagemagick
