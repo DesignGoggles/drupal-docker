@@ -1,8 +1,8 @@
 {
   "config": {
-    "scss": "/path/to/scss/directory/",
-    "css": "/path/to/css/directory/",
-    "style": "compressed"
+    "scss": "./path/to/scss/directory/",
+    "css": "./path/to/css/directory/",
+    "style": "expanded"
   },
   "scripts": {
     "init": "echo 'loglevel=silent' > ./.npmrc",
