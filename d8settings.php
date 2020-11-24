@@ -789,6 +789,7 @@ $settings['entity_update_batch_size'] = 50;
 #
 
 $config_directories['sync'] = '../config/sync';
+$settings["config_sync_directory"] = '../config/sync';
 
 /**
  * If there is a local settings file, then include it
