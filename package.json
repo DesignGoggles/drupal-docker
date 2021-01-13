@@ -5,11 +5,17 @@
     "style": "expanded"
   },
   "scripts": {
+    "about": "cat package.json",
     "init": "echo 'loglevel=silent' > ./.npmrc",
+    "build": "echo 'Building...';COMPOSER_PROCESS_TIMEOUT=2000 composer install; drush updb -y; drush cim -y; npm run compile:force; drush cr; echo 'Build complete.'",
     "compile": "echo 'Compiling SASS into CSS'; sass --style=$npm_package_config_style $npm_package_config_scss:$npm_package_config_css; echo 'Done!'",
     "watch": "echo 'Preparing to watch SASS'; sass --watch  --style=$npm_package_config_style $npm_package_config_scss:$npm_package_config_css",
     "clean": "echo 'Cleaning CSS Directory'; rm -r $npm_package_config_css/*; echo 'Done!'",
     "compile:force": "npm run clean; npm run compile",
+    "db:backup": "echo 'Backing up database...'; drush cr; drush sql-dump --gzip > $(hostname -i)_$(TZ=America/New_York date +%Y%m%d-%H%M).sql.gz; echo 'Complete! (maybe)'",
+    "db:backup:about": "echo 'Exports the active database to a sql.gz file to the current directory.'",
+    "db:import": "echo 'Dropping old db...'; drush sql-drop -y; echo 'Importing new file...'; drush sql-cli < $npm_config_file; echo 'Done!'",
+    "db:import:about": "echo 'Deletes old database and imports the new database file.'; echo 'Usage: npm run db:import --file=<filename>'",
     "ci": ""
   },
   "dependencies": {
