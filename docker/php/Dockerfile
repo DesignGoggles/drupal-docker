@@ -39,3 +39,6 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get install -
 
 # Fix npm
 RUN npm i -gs npm sass
+
+# Add file/view shortcut
+RUN echo 'alias la="clear;ls -alh"' >> ~/.bashrc
